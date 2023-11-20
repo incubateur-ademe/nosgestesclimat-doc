@@ -8,11 +8,8 @@ const config: Config = {
     "Le simualateur d'empreinte carbone personnel, développé par l'Agence de la Transition Écologique (ADEME).",
   favicon: "img/favicon.png",
 
-  // Set the production url of your site here
-  url: "https://incubateur-ademe.github.io/nosgestesclimat-doc/",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  url: "https://incubateur-ademe.github.io",
+  baseUrl: "/nosgestesclimat-doc/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

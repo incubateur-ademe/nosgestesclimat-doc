@@ -35,10 +35,6 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/incubateur-ademe/nosgestesclimat-doc",
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: "https://github.com/incubateur-ademe/nosgestesclimat-doc",
-        },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -72,9 +68,20 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "modelSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Modèle",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "websiteSidebar",
+          position: "left",
+          label: "Site web",
+        },
+        {
+          href: "https://nosgestesclimat.fr/documentation",
+          position: "left",
+          label: "Modèle (API)",
         },
         {
           href: "https://github.com/incubateur-ademe/nosgestesclimat",

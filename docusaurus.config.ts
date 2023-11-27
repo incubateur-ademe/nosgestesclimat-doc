@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "Nos Gestes Climat",
   tagline:
-    "Le simualateur d'empreinte carbone personnel, développé par l'Agence de la Transition Écologique (ADEME).",
+    "Le simulateur d'empreinte carbone personnel, développé par l'Agence de la Transition Écologique (ADEME).",
   favicon: "img/favicon.png",
 
   url: "https://incubateur-ademe.github.io",
@@ -47,13 +47,27 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
+    colorMode: {
+      defaultMode: "light",
+      disableSwitch: true,
+    },
+
+    announcementBar: {
+      id: "under_construction",
+      content:
+        "🚧 Ce site est en cours de construction. Il est possible que certaines informations soient manquantes ou erronées. 🚧",
+      backgroundColor: "#fafbfc",
+      textColor: "#091E42",
+      isCloseable: false,
+    },
+
     image: "img/social-card-ngc.png",
     navbar: {
       title: "Nos Gestes Climat",
       logo: {
         alt: "Nos Gestes Climat Logo",
         src: "img/logo.png",
+        height: 100,
       },
       items: [
         {
@@ -63,11 +77,6 @@ const config: Config = {
           label: "Tutorial",
         },
         {
-          type: "search",
-          position: "right",
-        },
-        // { to: "/blog", label: "Blog", position: "left" },
-        {
           href: "https://github.com/incubateur-ademe/nosgestesclimat",
           label: "GitHub",
           position: "right",
@@ -75,7 +84,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "Docs",
@@ -153,7 +161,6 @@ const config: Config = {
           ],
         },
       ],
-      // copyright: `Copyright © ${new Date().getFullYear()}`,
     },
     prism: {
       theme: prismThemes.github,

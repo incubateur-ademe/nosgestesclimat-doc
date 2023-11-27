@@ -10,12 +10,25 @@ import styles from "./index.module.css";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx("hero hero--success", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <Link
+          to="/docs/intro"
+          className="button button--primary button--lg text--right padding-horiz--md margin-right--md"
+        >
+          Explorer la documentation
+        </Link>
+
+        <Link
+          href="nosgestesclimat.fr/simulateur/bilan"
+          className="button button--secondary button--lg text--right padding-horiz--md"
+        >
+          Faire le test
+        </Link>
       </div>
     </header>
   );

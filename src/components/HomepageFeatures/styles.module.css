@@ -3,9 +3,16 @@
   align-items: center;
   padding: 5rem 0;
   width: 100%;
+  background-color: #fff;
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+}
+
+.arrowSvg {
+  height: auto;
+  width: 25px;
+  margin-left: 0.5rem;
 }

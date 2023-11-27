@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Je suis developpeur·euse",
     Svg: require("@site/static/img/undraw_programmer_re_owql.svg").default,
-    to: "/docs/contribuer",
+    to: "/docs/website",
     description: (
       <>
         Vous souhaitez contribuer au projet en développant de nouvelles
@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Je suis curieux·se",
     Svg: require("@site/static/img/undraw_among_nature_p1xb.svg").default,
-    to: "/docs/contribuer",
+    to: "/docs/intro",
     description: (
       <>Vous souhaitez en savoir plus sur le projet Nos Gestes Climat ?</>
     ),

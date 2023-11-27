@@ -24,7 +24,7 @@ function HomepageHeader() {
         </Link>
 
         <Link
-          href="nosgestesclimat.fr/simulateur/bilan"
+          href="https://nosgestesclimat.fr/simulateur/bilan"
           className="button button--secondary button--lg text--right padding-horiz--md"
         >
           Faire le test

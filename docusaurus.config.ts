@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "Nos Gestes Climat",
   tagline:
-    "Le simulateur d'empreinte carbone personnel, développé par l'Agence de la Transition Écologique (ADEME).",
+    "Documentation du simulateur d'empreinte carbone personnel, développé par l'Agence de la Transition Écologique (ADEME)",
   favicon: "img/favicon.png",
 
   url: "https://incubateur-ademe.github.io",
@@ -68,6 +68,12 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
+          sidebarId: "introSidebar",
+          position: "left",
+          label: "Présentation",
+        },
+        {
+          type: "docSidebar",
           sidebarId: "modelSidebar",
           position: "left",
           label: "Modèle",
@@ -80,8 +86,8 @@ const config: Config = {
         },
         {
           href: "https://nosgestesclimat.fr/documentation",
-          position: "left",
-          label: "Modèle (API)",
+          position: "right",
+          label: "Explorer le modèle",
         },
         {
           href: "https://github.com/incubateur-ademe/nosgestesclimat",

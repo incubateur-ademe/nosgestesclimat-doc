@@ -1,0 +1,23 @@
+---
+title: Ré-utilisation des modèles
+sidebar_position: 2
+---
+
+# Paquets
+
+Les modèles de calcul d'émissions de gaz à effet de serre de Publicodes
+commencent à être utilisés dans différents projets, comme : [futur.eco](futur.eco) et
+[Impact CO2](impactCO2.fr). Pour éviter la duplication des modèles et faciliter la réutilisation
+des règles, nous avons introduit un nouveau _méta-mécanisme_ : `importer!`.
+
+## Utilisation
+
+La résolution des imports se fait via la lib
+[`@publicodes/tools`](https://github.com/publicodes), pour plus d'informations
+voir la page de doc dédiée. 
+
+## Publication d'un nouveau paquet
+
+Pour être utilisé dans le méta-mécanisme `importer!`, le paquet NPM doit
+exposer le modèle compilé en `<package_name>.model.json`.
+

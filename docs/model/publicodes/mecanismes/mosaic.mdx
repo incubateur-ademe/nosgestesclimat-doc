@@ -1,0 +1,89 @@
+---
+title: ⚙️ Les mosaïques
+---
+
+# Les mosaïques
+
+:::info En bref
+
+Nous avons ajouté une nouvelle fonctionnalité sur le site de
+[nosgestesclimat.fr](https://nosgestesclimat.fr), permettant de poser
+plusieurs questions en une seule fois : les **mosaïques**.
+
+C'est très utile pour éviter de poser des dizaines de questions comme
+_Avez-vous un ordinateur portable ?_, _Avez-vous un smartphone ?_ ou _Avez-vous un
+appareil photo ?_. A la place, nous posons la question : _Quels équipements
+possédez-vous ?_. 
+
+:::
+
+:::caution
+
+Ce mécanisme _sur-mesure_ ne fait pas partie de la [liste des
+mécanismes](publi.codeshttps://publi.codes/docs/api/m%C3%A9canismes)
+supportés par le moteur de calcul [Publicodes](../../publicodes/intro).
+
+:::
+
+## Comment ça marche ?
+
+### Dans le modèle
+
+Pour définir une nouvelle mosaïque, il faut ajouter un _nouveau mécanisme_ `mosaique`
+dans la règle associée.
+
+Ce mécanisme attend plusieurs paramètres :
+
+- `type` : le type de la mosaïque (`selection` ou `number`)
+- `clé` : une clé qui permet de définir les questions de la mosaïque
+- `suggestions` : une liste de suggestions qui seront proposées à l'utilisateur
+- `total` : pour afficher un message en fonction du nombre de réponses
+  (disponible uniquement pour les mosaïques de type `number`)
+
+```yaml
+a:
+  question: Cochez ce qui vous correspond
+  mosaique:
+    type: selection
+    clé: présent
+    suggestions:
+      tout:
+        café . nombre: oui
+        thé . nombre: oui
+      aucun: aucun
+  formule:
+    somme:
+      - b
+      - c
+
+a . b:
+  applicable si: présent
+  formule: 1
+
+a . b . présent:
+  par défaut: oui
+
+a . c:
+  applicable si: présent
+  formule: d
+
+a . c . présent:
+  par défaut: non
+
+a . c . d:
+  formule: 100
+```
+
+:::caution 
+
+Les règles _enfants_ de la mosaïque doivent avoir un espace nom _deux fois plus
+profond_. Dans l'exemple ci-dessus, la règle `a . b .  c . présent` ne sera pas
+prise en compte dans la mosaïque.
+
+:::
+
+### Côté site
+
+La gestion des mosaïques est expliqué dans la [documentation du
+site](../../../website).
+

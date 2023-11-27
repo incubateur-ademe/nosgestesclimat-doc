@@ -4,3 +4,59 @@ sidebar_position: 1
 ---
 
 # Présentation du langage Publicodes
+
+Le modèle de calcul de NGC est implémenté en [Publicodes](https://publi.codes),
+un langage de règles open-source développé par
+[Beta.gouv](https://beta.gouv.fr/).
+
+Ce langage permet de décrire un ensemble de règle métier complexes, et de les
+interpréter dynamiquement pour calculer des résultats grâce [au moteur
+Publicodes](https://publi.codes/docs/api/core).
+
+:::info Un langage lisible
+
+Le langage Publicodes est conçu pour être lisible par des
+non-développeur·euses. Il doit pouvoir être lu et compris par des expert·es
+métiers, et permettre de faire le lien entre les règles métiers et leur
+implémentation informatique.
+
+:::
+
+## Exemple de règle
+
+Voici un exemple de règle Publicodes :
+
+```yaml title="./data/transport/transport . avion.publicodes"
+transport . avion . court courrier:
+  formule: heures de vol * vitesse moyenne * empreinte par km
+
+transport . avion . court courrier . vitesse moyenne:
+  formule: 600 / 1.3
+  unité: km/h
+  note: |
+    Nous utilisons la vitesse moyenne de vol pour un Paris Toulouse.
+```
+
+Cette règle permet de calculer l'empreinte carbone d'un trajet en avion de
+courte distance. Elle est composée de deux règles imbriquées :
+
+- `transport . avion . court courrier` : la règle principale, qui calcule
+  l'empreinte carbone d'un trajet en avion de courte distance.
+- `transport . avion . court courrier . vitesse moyenne` : une règle
+  intermédiaire, qui calcule la vitesse moyenne d'un avion de courte distance.
+
+## Documentation interactive
+
+Il est possible de générer une documentation interactive à partir d'un jeu de
+règles Publicodes.
+Cette documentation permet de visualiser toutes les valeurs intermédiaires
+qui sont utilisées au sein d'une règle, et de comprendre comment elle est
+calculée.
+
+:::tip Documentation du modèle de calcul de NGC
+
+Pour le modèle de calcul de NGC, la documentation est disponible à l'adresse
+suivante :
+[https://nosgestesclimat.fr/documentation](https://nosgestesclimat.fr/documentation)
+
+:::

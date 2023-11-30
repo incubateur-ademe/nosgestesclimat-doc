@@ -27,6 +27,20 @@ const config: Config = {
     locales: ["fr" /* , "en" */],
   },
 
+  plugins: [
+    [
+      "@docusaurus/plugin-ideal-image",
+      {
+        quality: 70,
+        sizes: [320, 640, 960, 1200, 1800, 2048],
+        max: 1030, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
+  ],
+
   presets: [
     [
       "classic",

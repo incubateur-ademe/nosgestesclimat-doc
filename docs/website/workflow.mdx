@@ -1,0 +1,73 @@
+---
+title: 🔄 Process de développement
+---
+
+import Image from '@theme/IdealImage';
+
+# Process de développement
+
+<Image img={require("../assets/website-dev-workflow.png")} style={{width: "50%"}}/>
+
+## Branches
+
+### 2 branches permanentes
+
+- **main** : la prod. Ne peut être mis à jour que via une branche de release
+(et une validation produit). Elle est associée à une version fixe du modèle.
+- **preprod** : notre environnement de dev sur lequel arrive toutes les PR
+(après code review) non recettées par Jeanne. La recette fonctionnelle “rapide”
+se fait ici. Cette branche risque forcément de contenir des bugs vu que
+n’importe qui peut merger sans recette fonctionnelle. Elle est associée à
+latest du modèle.
+
+### Une branche temporaire
+
+- **release-X-Y-Z** : Lorsque l’on est prêt à faire une release, on crée cette
+branche à partir de preprod. Plus aucune feature ne sera ajoutée à la release
+par la suite. Elle a les mêmes variables d’env que la prod (y compris la
+version du modèle). La recette fonctionnelle “approfondie” se fait ici. Les fix
+de bugs découverts pendant cette recette sont mergés directement dans cette
+branche. Cette branche est ensuite squash & merge dans main, puis merge dans
+preprod.
+
+## Process
+
+### Cycle de vie d’une feature/fix
+
+1. Création d’une branche de travail à partir de preprod. Vous pouvez nommer
+   cette branche comme vous le souhaitez (je prends personnellement le numéro
+   de ticket Notion, mais “certains” ne sont pas fan).
+2. Création d’une PR de cette branche vers preprod. La PR se nomme
+   “nom_du_ticket_notion_[NGC-numero-notion]”. Demande de review lorsque l’on
+   estime le travail fait et que les tests e2e passent.
+3. Si validation de la PR, plus aucune feature ne doit être ajoutée à la
+   branche (sauf petit fix à la marge demandé dans les commentaires de la
+   review). Elle peut être mergée directement (essayons de ne pas trop trainer
+   pour ne pas avoir 15 merge à faire ensuite)
+4. Si demande de modifications revenir à l’étape 2.
+5. Recette fonctionnelle dans preprod. Si tout va bien, on oublie. Sinon ça
+   retourne dans le sprint backlog, on réouvre la branche et on retourne à
+   l’étape 2.
+
+### Cycle de vie d’une release
+
+1. Tata Jeanne dit “C bon la release c go mdr jpp” ⇒ on met à jour le numéro de
+release dans package.json sur preprod puis on crée une branche de release.
+Cette branche se nomme release-X-Y-Z (et pas releaseX.Y.Z ou releaseXYZ)
+2. On crée une PR de la branche de release vers main. On pense bien à fixer la
+version du modèle sur cette branche.
+3. Tata Jeanne (abrégée “TJ” par la suite) fait une recette approfondie sur
+l’url de cette PR.
+4. Chaque bug repéré par TJ donne lieu à un fix (reprendre Cycle de vie d’une
+feature/fix en remplaçant preprod par release-X-Y-Z)
+5. TJ donne son go pour la mise en prod. Elle ne s’effectue pas après 16h, ni
+un jeudi aprem. On récupère toutes les PR d’ajout de features / correction de
+bugs en prod pour faire la liste du changelog. On fait ensuite un merge “Squash
+and merge” avec comme titre “Release X.Y.Z” et comme description le changelog.
+6. On crée une nouvelle PR de la branche de release vers preprod (pour
+récupérer les fix de la release). On fait un commit de merge normal.
+7. On crée une nouvelle release sur le repo (bien penser à créer une release
+sur main et pas preprod). Titre “Release X.Y.Z” et changelog (précédemment
+établi) en description.
+8. On fait un message sur NGC-dev pour s’autocongratuler et que TJ puisse aller
+faire un tour sur la prod.

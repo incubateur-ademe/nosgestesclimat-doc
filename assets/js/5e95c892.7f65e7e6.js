@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknosgetesclimat_doc=self.webpackChunknosgetesclimat_doc||[]).push([[661],{4942:(e,s,c)=>{c.r(s),c.d(s,{default:()=>o});c(7294);var r=c(6905),t=c(5463),a=c(3702),n=c(8790),u=c(2541),l=c(5893);function o(e){return(0,l.jsx)(t.FG,{className:(0,r.Z)(a.k.wrapper.docsPages),children:(0,l.jsx)(u.Z,{children:(0,n.H)(e.route.routes)})})}}}]);
